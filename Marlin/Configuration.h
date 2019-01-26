@@ -225,8 +225,10 @@
 // Offset of the extruders (uncomment if using more than one and relying on firmware to position when changing).
 // The offset has to be X=0, Y=0 for the extruder 0 hotend (default extruder).
 // For the other hotends it is their distance from the extruder 0 hotend.
-#define HOTEND_OFFSET_X {0.0, 31.70} // (in mm) for each extruder, offset of the hotend on the X axis
-#define HOTEND_OFFSET_Y {0.0, 1.80}  // (in mm) for each extruder, offset of the hotend on the Y axis
+//#define HOTEND_OFFSET_X {0.0, 31.70} // (in mm) for each extruder, offset of the hotend on the X axis
+//#define HOTEND_OFFSET_Y {0.0, 1.80}  // (in mm) for each extruder, offset of the hotend on the Y axis
+#define HOTEND_OFFSET_X {0.0, 31.00} // (in mm) for each extruder, offset of the hotend on the X axis
+#define HOTEND_OFFSET_Y {0.0, 0}  // (in mm) for each extruder, offset of the hotend on the Y axis
 
 // @section machine
 
@@ -381,10 +383,9 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
   // Ultimaker
-
-  //#define  DEFAULT_Kp 22.2
-  //#define  DEFAULT_Ki 1.08
-  //#define  DEFAULT_Kd 114
+  //#define DEFAULT_Kp 22.2
+  //#define DEFAULT_Ki 1.08
+  //#define DEFAULT_Kd 114
 
   // MakerGear
   //#define DEFAULT_Kp 7.0
@@ -679,7 +680,7 @@
 // @section probes
 
 //
-// See http://marlinfw.org/configuration/probes.html
+// See http://marlinfw.org/docs/configuration/probes.html
 //
 
 /**
@@ -753,7 +754,6 @@
  * readings with inductive probes and piezo sensors.
  */
 //#define PROBING_HEATERS_OFF       // Turn heaters off when probing
-#define PROBING_HEATERS_OFF       // Turn heaters off when probing
 #if ENABLED(PROBING_HEATERS_OFF)
   //#define WAIT_FOR_BED_HEATER     // Wait for bed to heat back up between probes (to improve accuracy)
 #endif
@@ -1037,10 +1037,10 @@
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Set the boundaries for probing (where the probe can reach).
-  #define LEFT_PROBE_BED_POSITION  (max(0         , (X_MIN_POS - X_PROBE_OFFSET_FROM_EXTRUDER)))
-  #define RIGHT_PROBE_BED_POSITION (min(X_MAX_POS , (X_MAX_POS + X_PROBE_OFFSET_FROM_EXTRUDER)))
-  #define FRONT_PROBE_BED_POSITION (max(0         , (Y_MIN_POS - Y_PROBE_OFFSET_FROM_EXTRUDER)))
-  #define BACK_PROBE_BED_POSITION  (min(Y_MAX_POS , (Y_MAX_POS + Y_PROBE_OFFSET_FROM_EXTRUDER)))
+  #define LEFT_PROBE_BED_POSITION (X_MIN_POS + MIN_PROBE_EDGE)
+  //#define RIGHT_PROBE_BED_POSITION (X_BED_SIZE - MIN_PROBE_EDGE)
+  //#define FRONT_PROBE_BED_POSITION MIN_PROBE_EDGE
+  //#define BACK_PROBE_BED_POSITION (Y_BED_SIZE - MIN_PROBE_EDGE)
 
   // Probe along the Y axis, advancing X after each column
   //#define PROBE_Y_FIRST
@@ -1543,7 +1543,7 @@
 //
 // Note: Usually sold with a white PCB.
 //
-//#define REPRAP_DISCOUNT_SMART_CONTROLLER
+#define REPRAP_DISCOUNT_SMART_CONTROLLER
 
 //
 // ULTIMAKER Controller.
@@ -1562,70 +1562,12 @@
 //#define PANEL_ONE
 
 //
-// MaKr3d Makr-Panel with graphic controller and SD support.
-// http://reprap.org/wiki/MaKr3d_MaKrPanel
-//
-//#define MAKRPANEL
-
-//
-// ReprapWorld Graphical LCD
-// https://reprapworld.com/?products_details&products_id/1218
-//
-//#define REPRAPWORLD_GRAPHICAL_LCD
-
-//
-// Activate one of these if you have a Panucatt Devices
-// Viki 2.0 or mini Viki with Graphic LCD
-// http://panucatt.com
-//
-//#define VIKI2
-//#define miniVIKI
-
-//
-// Adafruit ST7565 Full Graphic Controller.
-// https://github.com/eboston/Adafruit-ST7565-Full-Graphic-Controller/
-//
-//#define ELB_FULL_GRAPHIC_CONTROLLER
-
-//
-// RepRapDiscount Smart Controller.
-// http://reprap.org/wiki/RepRapDiscount_Smart_Controller
-//
-// Note: Usually sold with a white PCB.
-//
-//Display original
-#define REPRAP_DISCOUNT_SMART_CONTROLLER
-
-//
 // GADGETS3D G3D LCD/SD Controller
 // http://reprap.org/wiki/RAMPS_1.3/1.4_GADGETS3D_Shield_with_Panel
 //
 // Note: Usually sold with a blue PCB.
 //
 //#define G3D_PANEL
-
-//
-// RepRapDiscount FULL GRAPHIC Smart Controller
-// http://reprap.org/wiki/RepRapDiscount_Full_Graphic_Smart_Controller
-//
-// Display grafico
-//#define REPRAP_DISCOUNT_FULL_GRAPHIC_SMART_CONTROLLER
-
-//
-// MakerLab Mini Panel with graphic
-// controller and SD support - http://reprap.org/wiki/Mini_panel
-//
-//#define MINIPANEL
-
-//
-// RepRapWorld REPRAPWORLD_KEYPAD v1.1
-// http://reprapworld.com/?products_details&products_id=202&cPath=1591_1626
-//
-// REPRAPWORLD_KEYPAD_MOVE_STEP sets how much should the robot move when a key
-// is pressed, a value of 10.0 means 10mm per click.
-//
-//#define REPRAPWORLD_KEYPAD
-//#define REPRAPWORLD_KEYPAD_MOVE_STEP 1.0
 
 //
 // RigidBot Panel V1.0
